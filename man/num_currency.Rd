@@ -12,7 +12,8 @@ num_currency(
   format = "f",
   big.mark = ",",
   ...,
-  sep = ""
+  sep = "",
+  placement = "pre"
 )
 
 parse_currency(
