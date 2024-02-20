@@ -14,15 +14,22 @@
 #' num_currency(1200000, "USD", sep = " ")
 #' num_currency(1200000, "USD", format = "d", sep = " ")
 num_currency <- function(x, symbol = "$",
-                         digits = 2L, format = "f", big.mark = ",", ..., sep = "") {
-  x <- as_numeric(x)
+                         digits = 2L, format = "f", big.mark = ",", ..., sep = "", placement = "pre") {
+  x <- as.numeric(x)
   formattable(x,
     format = format, big.mark = big.mark, digits = digits, ...,
     postproc = function(str, x) {
-      sprintf(
-        "%s%s%s",
-        ifelse(is.na(x), "", symbol), sep, str
-      )
+      if(placement == "post"){
+        sprintf(
+          "%s%s%s",
+          str, sep, ifelse(is.na(x), "", symbol)
+        )
+      }else{
+        sprintf(
+          "%s%s%s",
+          ifelse(is.na(x), "", symbol), sep, str
+          )
+      }
     }
   )
 }
