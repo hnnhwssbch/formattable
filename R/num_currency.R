@@ -7,6 +7,7 @@
 #' @inheritParams num_comma
 #' @param symbol currency symbol
 #' @param sep separator between symbol and value
+#' @param placement placement of the curreny indicator pre or post
 #' @export
 #' @examples
 #' num_currency(200000)
